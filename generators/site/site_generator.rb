@@ -22,6 +22,7 @@ class SiteGenerator < RubiGen::Base
       m.directory File.join(site_path,("#{name.underscore}"),"pages")
       m.directory File.join(site_path,("#{name.underscore}"),"pages","partials")
       m.directory File.join('spec','isolation',name.underscore)
+      m.directory File.join('spec','support',name.underscore)
       m.template "site.yml.erb", File.join('config',"#{name.underscore}.yml")
     end
   end
