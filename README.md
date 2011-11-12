@@ -28,9 +28,7 @@ Taza is meant to make acceptance testing more sane for developers(or QA where ap
 Taza is meant to be a refreshing way to look at browser testing. Taza provides a few ways to abstract browser-based testing into three simple ideas.
 
   * Sites
-
   * Pages
-
   * Flows
 
 
