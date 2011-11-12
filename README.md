@@ -35,17 +35,13 @@ Pages have elements and filters.
 Flows are common actions on a site such as logging in or performing a search.
 
 Here's an example for starting a project around Google apps:
+
 ```
   $ taza google
-
   $ cd google/
-
   $ ./script/generate site google
-
   $ ./script/generate page home_page google
-
   $ ./script/generate flow search google
-
   $ rake spec:isolation:google
 ```
 
@@ -55,7 +51,7 @@ That will generate an RSpec HTML report at artifacts/functional/google/index.htm
 
 ## INSTALL:
 
-* `[sudo] gem install taza`
+* `$ [sudo] gem install taza`
 
 ## LICENSE:
 
