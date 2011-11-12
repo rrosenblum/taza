@@ -17,7 +17,7 @@ describe Taza::Browser do
   end
 
   it "should use params browser type when creating selenium" do
-    pending "Debugging CI problem"
+    pending "Travis cant load selenium. :("
     browser_type = :opera
     Selenium::SeleniumDriver.expects(:new).with(anything,anything,'*opera',anything)
     Taza::Browser.create(:browser => browser_type, :driver => :selenium)
