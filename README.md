@@ -1,6 +1,8 @@
 = taza
+[![Build Status](https://secure.travis-ci.org/hammernight/taza.png)](http://travis-ci.org/hammernight/taza)
 
-* http://github.com/scudco/taza/tree/master 
+* https://github.com/hammernight/taza
+* Wiki: http://github.com/scudco/taza/wikis
 
 == DESCRIPTION:
 
@@ -48,8 +50,7 @@ That will generate an RSpec HTML report at artifacts/functional/google/index.htm
 
 == INSTALL:
 
-* sudo gem install taza 
-* gem install taza
+* [sudo] gem install taza 
 
 == LICENSE:
 
