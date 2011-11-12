@@ -14,14 +14,14 @@ Gem::Specification.new do |s|
   s.required_ruby_version     = '>= 1.8.7'
   s.rubyforge_project = "taza"
 
-  s.add_runtime_dependency(%q<rake>, ["~> 0.8.3"])
+  s.add_runtime_dependency(%q<rake>, [">= 0.8.3"])
   s.add_runtime_dependency(%q<mocha>, ["~> 0.9.3"])
   s.add_runtime_dependency(%q<rspec>, ["~> 2.6"])
   s.add_runtime_dependency(%q<rubigen>, ["~> 1.5.6"])
   s.add_runtime_dependency(%q<user-choices>, ["~> 1.1.6.1"])
   s.add_runtime_dependency(%q<Selenium>, ["~> 1.1.14"])
-  s.add_runtime_dependency(%q<firewatir>, ["~> 1.2.1"])
-  s.add_runtime_dependency(%q<watir-webdriver>, ["~> 0.3.1"])
+  s.add_runtime_dependency(%q<firewatir>, ["~> 1.9.4"])
+  s.add_runtime_dependency(%q<watir-webdriver>, ["~> 0.3"])
 
 
   s.files = `git ls-files`.split("\n")
