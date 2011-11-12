@@ -26,9 +26,13 @@ Taza is meant to make acceptance testing more sane for developers(or QA where ap
 ## SYNOPSIS:
 
 Taza is meant to be a refreshing way to look at browser testing. Taza provides a few ways to abstract browser-based testing into three simple ideas.
+
   * Sites
+
   * Pages
+
   * Flows
+
 
 Sites have Pages.
 Pages have elements and filters.
@@ -48,6 +52,9 @@ Here's an example for starting a project around Google apps:
 That will generate an RSpec HTML report at artifacts/functional/google/index.html
 
 ## REQUIREMENTS:
+
+  * Ruby >= 1.8.7
+  * A browser.
 
 ## INSTALL:
 
