@@ -1,14 +1,14 @@
-= taza
+#taza
 [![Build Status](https://secure.travis-ci.org/hammernight/taza.png)](http://travis-ci.org/hammernight/taza)
 
 * https://github.com/hammernight/taza
 * Wiki: http://github.com/scudco/taza/wikis
 
-== DESCRIPTION:
+## DESCRIPTION:
 
 Taza is meant to make acceptance testing more sane for developers(or QA where applicable) and customers.
 
-== FEATURES:
+## FEATURES:
 
 * Generate a project for browser-based testing
 * Generate pages and sites for different applications
@@ -18,12 +18,12 @@ Taza is meant to make acceptance testing more sane for developers(or QA where ap
 * Manage tests by tags
 * Cross-site testing
 
-== ISSUES:
+## ISSUES:
 
 * Taza has only been used in the wild with WATIR(Safari/Firefox/IE), but Selenium support is built-in
 * Taza's generators currently generate RSpec specs, Test::Unit and other test framework support is planned
 
-== SYNOPSIS:
+## SYNOPSIS:
 
 Taza is meant to be a refreshing way to look at browser testing. Taza provides a few ways to abstract browser-based testing into three simple ideas.
   * Sites
@@ -34,25 +34,25 @@ Sites have Pages.
 Pages have elements and filters.
 Flows are common actions on a site such as logging in or performing a search.
 
-Here's an example for starting a project around the Google sites
-
+Here's an example for starting a project around Google apps:
+```
   $ taza google
   $ cd google/
   $ ./script/generate site google
   $ ./script/generate page home_page google
   $ ./script/generate flow search google
   $ rake spec:isolation:google
+```
 
 That will generate an RSpec HTML report at artifacts/functional/google/index.html
 
+## REQUIREMENTS:
 
-== REQUIREMENTS:
-
-== INSTALL:
+## INSTALL:
 
 * [sudo] gem install taza 
 
-== LICENSE:
+## LICENSE:
 
 (The MIT License)
 
