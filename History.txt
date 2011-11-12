@@ -1,3 +1,9 @@
+=== 0.9.1
+
+* Bundler support on the project itself
+* Fixing generators
+* Lots of small bug fixes with Ruby 1.9
+
 === 0.9.0
 
 * Watir-Webdriver support (use driver watir_webdriver)
