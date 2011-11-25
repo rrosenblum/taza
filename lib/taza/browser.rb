@@ -33,6 +33,17 @@ module Taza
       Selenium::SeleniumDriver.new(params[:server_ip],params[:server_port],'*' + params[:browser].to_s,params[:timeout])
     end
 
+    def self.create_selenium_webdriver(params)
+      require 'selenium-webdriver'
+      #Small hack. :)
+      Selenium::WebDriver::Driver.class_eval do
+        def goto(params)
+          navigate.to params
+        end
+      end
+      Selenium::WebDriver.for params[:browser].to_sym
+    end
+
     def self.watir_firefox(params)
       require 'firewatir'
       FireWatir::Firefox.new
@@ -46,7 +57,7 @@ module Taza
     def self.watir_ie(params)
       require 'watir'
       if params[:attach]
-         browser = Watir::IE.find(:title, //)
+        browser = Watir::IE.find(:title, //)
       end
       browser || Watir::IE.new
     end
