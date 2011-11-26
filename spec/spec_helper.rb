@@ -5,6 +5,7 @@ require 'rubigen'
 require 'rubigen/helpers/generator_test_helper'
 require 'taza'
 require 'watir-webdriver'
+require 'selenium-webdriver'
 RSpec.configure do |config|
   config.mock_with :mocha
 end

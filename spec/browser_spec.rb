@@ -32,6 +32,11 @@ describe Taza::Browser do
     browser = Taza::Browser.create(:browser => :firefox, :driver => :watir_webdriver)
   end
 
+  it 'should use params browser type when creating a selenium webdriver instance' do
+    Selenium::WebDriver.expects(:for).with(:firefox)
+    browser = Taza::Browser.create(:browser => :firefox, :driver => :selenium_webdriver)
+  end
+
   it "should be able to create a selenium instance" do
     browser = Taza::Browser.create(:browser => :firefox, :driver => :selenium)
     browser.should be_a_kind_of(Selenium::SeleniumDriver)
