@@ -7,7 +7,6 @@ rvm:
   - ree
   - jruby
   - rbx
-  - rbx-19mode
 env:
   -
   - JRUBY_OPTS="--1.8"
@@ -47,17 +46,13 @@ matrix:
     # exclude jruby
     - rvm: jruby
       env:
+    - rvm: jruby
+      env: JRUBY_OPTS="--1.9"
 
     # exclude rbx
     - rvm: rbx
       env: JRUBY_OPTS="--1.8"
     - rvm: rbx
-      env: JRUBY_OPTS="--1.9"
-
-    # exclude rbx-19mode
-    - rvm: rbx-19mode
-      env: JRUBY_OPTS="--1.8"
-    - rvm: rbx-19mode
       env: JRUBY_OPTS="--1.9"
 notifications:
   email:
