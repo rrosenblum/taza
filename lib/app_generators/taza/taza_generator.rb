@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rubigen'
+require 'taza'
 class TazaGenerator < RubiGen::Base
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
