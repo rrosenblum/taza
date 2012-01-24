@@ -60,7 +60,7 @@ module Taza
         @browser = Browser.create(config)
         @i_created_browser = true
       end
-      @browser.goto(params[:url] || config[:url])
+      @browser.goto(params[:url] || config[:url]) unless params[:url] == false
       execute_block_and_close_browser(browser,&block) if block_given?
     end
 
