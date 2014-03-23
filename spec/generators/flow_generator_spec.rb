@@ -13,7 +13,7 @@ class Taza::Site
 end
 
 describe "Flow Generation" do
-  include RubiGen::GeneratorTestHelper
+  #include RubiGen::GeneratorTestHelper
   include Helpers::Generator
   include Helpers::Taza
 

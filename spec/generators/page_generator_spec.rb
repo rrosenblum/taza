@@ -4,7 +4,7 @@ require 'fileutils'
 require 'taza/page'
 
 describe "Page Generation" do
-  include RubiGen::GeneratorTestHelper
+  #include RubiGen::GeneratorTestHelper
   include Helpers::Generator
   include Helpers::Taza
 
