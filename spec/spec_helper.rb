@@ -25,7 +25,7 @@ RSpec.configure do |config|
   def capture(stream)
     begin
       stream = stream.to_s
-      eval "#{stream} = StringIO.new"
+      eval "$#{stream} = StringIO.new"
       yield
       result = eval("$#{stream}").string
     ensure
