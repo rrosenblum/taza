@@ -6,7 +6,7 @@ require 'taza/options'
 require 'taza/browser'
 require 'taza/page'
 require 'taza/flow'
-root_path=File.join(File.dirname(__FILE__), '../')
+root_path=File.join(File.dirname(__FILE__), '../../')
 $LOAD_PATH.unshift root_path unless $LOAD_PATH.include?(root_path)
 describe Taza::Site do
 
