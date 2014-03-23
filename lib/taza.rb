@@ -14,6 +14,8 @@ require 'extensions/hash'
 require 'extensions/array'
 require 'formatters/failing_examples_formatter'
 
+require_relative '../lib/taza/generators/project_generator'
+
 module ForwardInitialization
   module ClassMethods
     def new(*args,&block)
