@@ -10,7 +10,12 @@ module Taza
     argument :browser, :default => 'firefox'
 
     def self.source_root
+      File.dirname(__FILE__)
+    end
 
+    desc "This creates the Taza project structure"
+    def create
+      template('templates/project/Gemfile.tt', 'Gemfile') unless File.exists? 'Gemfile'
     end
 
   end
