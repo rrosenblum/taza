@@ -12,7 +12,7 @@ module Taza
       File.dirname(__FILE__)
     end
 
-    desc "This will generate your Taza partial. Example: taza flow checkout foo"
+    desc "This will generate your Taza flow. Example: taza flow checkout foo"
     def flow
       name = site_name.underscore
 
