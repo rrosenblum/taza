@@ -18,7 +18,7 @@ module Taza
 
       if File.directory?("lib/sites/#{name}")
         template('templates/page/page.rb.tt', "lib/sites/#{name}/pages/#{page_name}_page.rb")
-        template('templates/page/page_spec.rb.tt', "lib/sites/spec/isolation/#{page_name}_page_spec.rb")
+        template('templates/page/page_spec.rb.tt', "spec/isolation/#{page_name}_page_spec.rb")
       else
         say "No such site #{name} exists! ", :red
         say "Please run 'taza create #{name}'", :green
