@@ -43,15 +43,16 @@ describe Taza::Browser do
   end
 
   it "should use environment settings for server port and ip" do
-    Taza::Settings.stubs(:path).returns(File.join('spec','sandbox'))
+    Taza::Settings.stubs(:path).returns(File.join(@original_directory,'spec','sandbox'))
     ENV['SERVER_PORT'] = 'server_port'
     ENV['SERVER_IP'] = 'server_ip'
     Selenium::SeleniumDriver.expects(:new).with('server_ip','server_port',anything,anything)
-    Taza::Browser.create(Taza::Settings.config("SiteName"))
+    Taza::Browser.create(
+        Taza::Settings.config("SiteName"))
   end
 
   it "should use environment settings for timeout" do
-    Taza::Settings.stubs(:path).returns(File.join('spec','sandbox'))
+    Taza::Settings.stubs(:path).returns(File.join(@original_directory,'spec','sandbox'))
     ENV['TIMEOUT'] = 'timeout'
     Selenium::SeleniumDriver.expects(:new).with(anything,anything,anything,'timeout')
     Taza::Browser.create(Taza::Settings.config("SiteName"))
