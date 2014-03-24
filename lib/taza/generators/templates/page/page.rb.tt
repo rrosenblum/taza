@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'taza/page'
 
-module <%= site_name.camelize %>
-  class <%= page_name.camelize %>Page < ::Taza::Page
+module <%= site_name.underscore.camelize %>
+  class <%= page_name.underscore.camelize %>Page < ::Taza::Page
 
   end
 end
