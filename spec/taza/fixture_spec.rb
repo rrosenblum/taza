@@ -4,7 +4,8 @@ require 'extensions/array'
 
 describe Taza::Fixture do
   before :each do
-    @base_path = File.join('.','spec','sandbox','fixtures','')
+    #TODO: we should generate the base project in a temp dir
+    @base_path = File.join(@original_directory,'spec','sandbox','fixtures','')
   end
 
   it "should be able to load entries from fixtures" do
