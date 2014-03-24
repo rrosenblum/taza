@@ -1,7 +1,7 @@
 require 'rubygems'
 
 module <%= site_name.camelize %>
-  class <%= name.camelize %> < ::Taza::Page
-    
+  class <%= partial_name.camelize %> < ::Taza::Page
+
   end
 end
