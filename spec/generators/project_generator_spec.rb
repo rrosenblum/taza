@@ -61,29 +61,16 @@ describe Taza::ProjectGenerator do
         expect(output).to include('spec/spec_helper.rb')
         expect(File.exists?('spec/spec_helper.rb')).to be_true
       end
-    end
-  end
 
+      xit "should generate a console script" do
+        run_generator('taza', [APP_ROOT], generator_sources)
+        File.exists?(File.join(APP_ROOT, 'script', 'console')).should be_true
+      end
 
-  describe 'old broken tests' do
-    xit "should generate a spec helper that can be required" do
-      run_generator('taza', [APP_ROOT], generator_sources)
-      system("ruby -c #{@spec_helper} > #{null_device}").should be_true
-    end
-
-    xit "should generate a rakefile that can be required" do
-      run_generator('taza', [APP_ROOT], generator_sources)
-      system("ruby -c #{@spec_helper} > #{null_device}").should be_true
-    end
-
-    xit "should generate a console script" do
-      run_generator('taza', [APP_ROOT], generator_sources)
-      File.exists?(File.join(APP_ROOT, 'script', 'console')).should be_true
-    end
-
-    xit "should generate a windows console script" do
-      run_generator('taza', [APP_ROOT], generator_sources)
-      File.exists?(File.join(APP_ROOT, 'script', 'console.cmd')).should be_true
+      xit "should generate a windows console script" do
+        run_generator('taza', [APP_ROOT], generator_sources)
+        File.exists?(File.join(APP_ROOT, 'script', 'console.cmd')).should be_true
+      end
     end
   end
 end

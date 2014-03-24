@@ -54,36 +54,4 @@ describe Taza::SiteGenerator do
       end
     end
   end
-
-  context 'old failing specs' do
-    xit "should generate configuration file for a site" do
-      run_generator('site', [@site_name], generator_sources)
-      File.exists?(File.join(PROJECT_FOLDER, 'config', 'wikipedia_foo.yml')).should be_true
-    end
-
-    xit "should generate a site path for pages" do
-      run_generator('site', [@site_name], generator_sources)
-      File.directory?(@site_folder).should be_true
-    end
-
-    xit "should generate a partials folder under pages" do
-      run_generator('site', [@site_name], generator_sources)
-      File.directory?(File.join(@site_folder, "pages", "partials")).should be_true
-    end
-
-    xit "should generate a folder for a sites isolation tests" do
-      run_generator('site', [@site_name], generator_sources)
-      File.directory?(File.join(PROJECT_FOLDER, 'spec', 'isolation', 'wikipedia_foo')).should be_true
-    end
-
-    xit "generated site that uses the block given in new" do
-      @site_class = generate_site(@site_name)
-      stub_settings
-      stub_browser
-      foo = nil
-      @site_class.new { |site| foo = site }
-      foo.should_not be_nil
-      foo.should be_a_kind_of(Taza::Site)
-    end
-  end
 end

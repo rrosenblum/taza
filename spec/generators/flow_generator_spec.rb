@@ -23,18 +23,4 @@ describe Taza::FlowGenerator do
       end
     end
   end
-
-  context 'failing specs' do
-
-    xit "should give you usage if you do not give two arguments" do
-      FlowGenerator.any_instance.expects(:usage)
-      lambda { run_generator('flow', [@flow_name], generator_sources) }.should raise_error
-    end
-
-    xit "should give you usage if you give a site that does not exist" do
-      FlowGenerator.any_instance.expects(:usage)
-      $stderr.expects(:puts).with(regexp_matches(/NoSuchSite/))
-      lambda { run_generator('flow', [@flow_name, "NoSuchSite"], generator_sources) }.should raise_error
-    end
-  end
 end
