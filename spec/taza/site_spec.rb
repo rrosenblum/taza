@@ -6,17 +6,13 @@ require 'taza/options'
 require 'taza/browser'
 require 'taza/page'
 require 'taza/flow'
-root_path=File.join(File.dirname(__FILE__), '../../')
-$LOAD_PATH.unshift root_path unless $LOAD_PATH.include?(root_path)
+
 describe Taza::Site do
 
-  before :all do
-    @pages_path = File.join("spec","sandbox","pages","foo","**","*.rb")
-    @flows_path = File.join("spec","sandbox","flows","*.rb")
-    Foo = Class.new(Taza::Site)
-  end
-
   before :each do
+    @pages_path = File.join(@original_directory, "spec","sandbox","pages","foo","**","*.rb")
+    @flows_path = File.join(@original_directory, "spec","sandbox","flows","*.rb")
+    Foo = Class.new(Taza::Site)
     Foo.any_instance.stubs(:pages_path).returns(@pages_path)
     ENV['BROWSER'] = nil
     ENV['DRIVER'] = nil
@@ -36,8 +32,8 @@ describe Taza::Site do
     browser = stub_browser
     Taza::Browser.stubs(:create).returns(browser)
     Barz = Class.new(Taza::Site)
-    Barz.any_instance.stubs(:path).returns('spec/sandbox')
-    Barz.any_instance.stubs(:flows_path).returns(@flows_path)
+    Barz.any_instance.stubs(:path).returns("#{@original_directory}/spec/sandbox/")
+    Barz.any_instance.stubs(:flows_path).returns("#{@original_directory}/spec/sandbox/flows/batman.rb")
     Barz.new.batman_flow.should == "i am batman"
   end
 
