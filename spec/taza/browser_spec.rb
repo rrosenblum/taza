@@ -43,6 +43,7 @@ describe Taza::Browser do
   end
 
   it "should use environment settings for server port and ip" do
+    #TODO:we need to make this more dynamic and move the skeleton project to the temp dir
     Taza::Settings.stubs(:path).returns(File.join(@original_directory,'spec','sandbox'))
     ENV['SERVER_PORT'] = 'server_port'
     ENV['SERVER_IP'] = 'server_ip'
