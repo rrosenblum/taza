@@ -17,6 +17,7 @@ require 'formatters/failing_examples_formatter'
 #generators
 require_relative '../lib/taza/generators/project_generator'
 require_relative '../lib/taza/generators/site_generator'
+require_relative '../lib/taza/generators/page_generator'
 
 module ForwardInitialization
   module ClassMethods
