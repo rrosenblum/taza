@@ -8,7 +8,8 @@ require 'taza/page'
 require 'taza/flow'
 
 describe Taza::Site do
-
+  #TODO: we need to clean up these tests and remove the warning below
+  #/Users/bisbot/Projects/Taza/taza/spec/taza/site_spec.rb:15: warning: already initialized constant Foo
   before :each do
     @pages_path = File.join(@original_directory, "spec","sandbox","pages","foo","**","*.rb")
     @flows_path = File.join(@original_directory, "spec","sandbox","flows","*.rb")
