@@ -1,15 +1,12 @@
+language: ruby
 script: "bundle exec rspec spec"
 rvm:
-  - 1.8.7
-  - 1.9.2
   - 1.9.3
+  - 2.0.0
   - ruby-head
-  - ree
-  - jruby
+  - jruby-19mode
   - rbx
 env:
-  -
-  - JRUBY_OPTS="--1.8"
   - JRUBY_OPTS="--1.9"
 matrix:
   exclude:
@@ -57,3 +54,4 @@ matrix:
 notifications:
   email:
     - pnascimento@gmail.com
+    - oriekenjr@gmail.com
