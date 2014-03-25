@@ -5,7 +5,7 @@ describe Taza::Page do
 
   class ElementAndFilterContextExample < Taza::Page
     element(:sample_element) {browser}
-    filter:sample_filter, :sample_element
+    filter(:sample_filter, :sample_element)
     def sample_filter
       browser
     end
@@ -28,6 +28,10 @@ describe Taza::Page do
   it "should execute an element's block with the params provided for its method" do
     Taza::Page.element(:boo){|baz| baz}
     Taza::Page.new.boo("rofl").should == "rofl"
+    end
+
+  it "element's name can not be nil" do
+    expect{ Taza::Page.element(nil){ } }.to raise_error(Taza::ElementError)
   end
 
   it "should execute elements and filters in the context of the page instance" do
