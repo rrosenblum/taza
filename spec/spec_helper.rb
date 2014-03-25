@@ -1,13 +1,38 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'mocha'
-require 'rubigen'
-require 'rubigen/helpers/generator_test_helper'
 require 'taza'
+require 'thor'
 require 'watir-webdriver'
 require 'selenium-webdriver'
+
 RSpec.configure do |config|
   config.mock_with :mocha
+
+  config.before(:each) do
+    $0 = 'home'
+    ARGV.clear
+    @directory = Dir.mktmpdir('taza-sandbox-')
+    @original_directory = Dir.pwd
+    Dir.chdir(@directory)
+  end
+
+  config.after(:each) do
+    Dir.chdir(@original_directory)
+    FileUtils.rmtree(@directory)
+  end
+
+  def capture(stream)
+    begin
+      stream = stream.to_s
+      eval "$#{stream} = StringIO.new"
+      yield
+      result = eval("$#{stream}").string
+    ensure
+      eval("$#{stream} = #{stream.upcase}")
+    end
+    result
+  end
 end
 
 def null_device

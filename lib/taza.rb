@@ -14,6 +14,13 @@ require 'extensions/hash'
 require 'extensions/array'
 require 'formatters/failing_examples_formatter'
 
+#generators
+require_relative 'taza/generators/project_generator'
+require_relative 'taza/generators/site_generator'
+require_relative 'taza/generators/page_generator'
+require_relative 'taza/generators/partial_generator'
+require_relative 'taza/generators/flow_generator'
+
 module ForwardInitialization
   module ClassMethods
     def new(*args,&block)

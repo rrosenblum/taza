@@ -1,0 +1,10 @@
+require 'rubygems'
+require 'taza'
+
+module <%= site_name.underscore.camelize %>
+  include ForwardInitialization
+
+  class <%= site_name.underscore.camelize %> < ::Taza::Site
+
+  end
+end

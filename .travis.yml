@@ -1,59 +1,14 @@
+language: ruby
 script: "bundle exec rspec spec"
 rvm:
-  - 1.8.7
-  - 1.9.2
   - 1.9.3
+  - 2.0.0
+  - 2.1.0
   - ruby-head
-  - ree
-  - jruby
+  - jruby-19mode
+  - jruby-head
   - rbx
-env:
-  -
-  - JRUBY_OPTS="--1.8"
-  - JRUBY_OPTS="--1.9"
-matrix:
-  exclude:
-    # exclude 1.8.7
-    - rvm: 1.8.7
-      env: JRUBY_OPTS="--1.8"
-    - rvm: 1.8.7
-      env: JRUBY_OPTS="--1.9"
-
-    # exclude 1.9.2
-    - rvm: 1.9.2
-      env: JRUBY_OPTS="--1.8"
-    - rvm: 1.9.2
-      env: JRUBY_OPTS="--1.9"
-
-    # exclude 1.9.3
-    - rvm: 1.9.3
-      env: JRUBY_OPTS="--1.8"
-    - rvm: 1.9.3
-      env: JRUBY_OPTS="--1.9"
-
-    # exclude ruby-head
-    - rvm: ruby-head
-      env: JRUBY_OPTS="--1.8"
-    - rvm: ruby-head
-      env: JRUBY_OPTS="--1.9"
-
-    # exclude ree
-    - rvm: ree
-      env: JRUBY_OPTS="--1.8"
-    - rvm: ree
-      env: JRUBY_OPTS="--1.9"
-
-    # exclude jruby
-    - rvm: jruby
-      env:
-    - rvm: jruby
-      env: JRUBY_OPTS="--1.9"
-
-    # exclude rbx
-    - rvm: rbx
-      env: JRUBY_OPTS="--1.8"
-    - rvm: rbx
-      env: JRUBY_OPTS="--1.9"
 notifications:
   email:
     - pnascimento@gmail.com
+    - oriekenjr@gmail.com
