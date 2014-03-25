@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.authors               = ["Adam Anderson", "Pedro Nascimento", "Oscar Rieken"]
   s.email                 = ["watir-general@googlegroups.com"]
   s.homepage              = "http://github.com/hammernight/taza"
-  s.summary               = "Taza is a page object framework."
-  s.description           = "Taza is a page object framework."
-  s.required_ruby_version = '>= 1.8.7'
+  s.summary               = "Taza is an opinionated page object framework."
+  s.description           = "Taza is an opinionated page object framework."
+  s.required_ruby_version = '>= 1.9.3'
   s.rubyforge_project     = "taza"
   s.files                 = `git ls-files`.split("\n")
   s.test_files            = `git ls-files -- {test,spec,features}/*`.split("\n")
