@@ -46,7 +46,7 @@ module Taza
       end
     end
 
-    # A filter for elemenet(s) on a page
+    # A filter for element(s) on a page
     # Example:
     #   class HomePage < Taza::Page
     #     element(:foo) {browser.element_by_xpath('some xpath')}
@@ -76,6 +76,7 @@ module Taza
     end
 
     def self.page_module(name,&block)
+      puts "Warning: page_module is deprecated; use a partial instead."
       @module = name
       yield(block)
       @module = nil
