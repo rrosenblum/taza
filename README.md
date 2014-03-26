@@ -4,6 +4,7 @@
 
 * https://github.com/hammernight/taza
 * Wiki: http://github.com/scudco/taza/wikis
+* http://hammernight.github.io/taza/
 
 ## DESCRIPTION:
 
@@ -40,11 +41,11 @@ Flows are common actions on a site such as logging in or performing a search.
 Here's an example for starting a project around Google apps:
 
 ```
-  $ taza google
+  $ taza create google
   $ cd google/
-  $ ./script/generate site google
-  $ ./script/generate page home_page google
-  $ ./script/generate flow search google
+  $ taza site google
+  $ taza page home_page google
+  $ taza flow search google
   $ rake spec:isolation:google
 ```
 
@@ -52,7 +53,7 @@ That will generate an RSpec HTML report at artifacts/functional/google/index.htm
 
 ## REQUIREMENTS:
 
-  * Ruby >= 1.8.7
+  * Ruby >= 1.9.3
   * A browser.
 
 ## INSTALL:
