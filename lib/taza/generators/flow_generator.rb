@@ -1,5 +1,6 @@
 require 'thor'
 require 'active_support/all'
+require_relative 'partial_generator'
 
 module Taza
   class FlowGenerator < PartialGenerator

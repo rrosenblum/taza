@@ -2,7 +2,13 @@ require 'spec_helper'
 require 'rubygems'
 require 'fileutils'
 
-describe "Taza project generator script" do
+describe "Taza bin" do
+
+  it 'runs from the terminal' do
+    output = system("taza")
+    expect(output).to be_true
+
+  end
 
   it "should have an executable script" do
     pending "Not sure this is really necessary, as this is just testing if command line returns anything. It also breaks JRuby."
