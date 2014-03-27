@@ -1,0 +1,7 @@
+Before do
+  @<%= site_name.downcase %> == <%= site_name.underscore.camelize %>.new
+end
+
+After do
+  @<%= site_name.downcase %>.driver.close
+end

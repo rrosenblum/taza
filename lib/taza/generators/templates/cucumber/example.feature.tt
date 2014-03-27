@@ -1,0 +1,9 @@
+Feature: Using Cucumber with Taza
+
+  In order to use taza with cucumber
+  As a team member
+  I want to have an example cuke
+
+  Scenario: Taza works with Cucumber
+    Given I visit my Taza site
+    Then I should see a failure because I have not written a cuke

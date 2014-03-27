@@ -20,6 +20,7 @@ require_relative 'taza/generators/site_generator'
 require_relative 'taza/generators/page_generator'
 require_relative 'taza/generators/partial_generator'
 require_relative 'taza/generators/flow_generator'
+require_relative 'taza/generators/cucumber_generator'
 
 module ForwardInitialization
   module ClassMethods
