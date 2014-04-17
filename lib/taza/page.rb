@@ -32,6 +32,10 @@ module Taza
     #   end
     # homepage.foo.click
     def self.element(name,&block)
+      if name.nil?
+        raise ElementError, "Element name can not be nil"
+      end
+
       if !@module.nil?
         self.elements[@module] = Hash.new if self.elements[@module].nil?
         self.elements[@module] = self.elements[@module].merge({ name => block })
@@ -42,7 +46,7 @@ module Taza
       end
     end
 
-    # A filter for elemenet(s) on a page
+    # A filter for element(s) on a page
     # Example:
     #   class HomePage < Taza::Page
     #     element(:foo) {browser.element_by_xpath('some xpath')}
@@ -72,6 +76,7 @@ module Taza
     end
 
     def self.page_module(name,&block)
+      puts "Warning: page_module is deprecated; use a partial instead."
       @module = name
       yield(block)
       @module = nil
@@ -91,7 +96,7 @@ module Taza
 
     def add_element_methods(page_module = nil) # :nodoc:
       self.class.elements.each do |element_name,element_block|
-        if (element_block.is_a?(Hash) && !page_module.nil? && page_module==element_name)
+        if page_module == element_name
           element_block.each do |key,value|
             filters = self.class.filters[element_name] + self.class.filters[:all] + self.class.filters[key]
             add_element_method(:filters => filters, :element_name => key, :element_block => value)

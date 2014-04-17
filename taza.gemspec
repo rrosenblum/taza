@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.authors               = ["Adam Anderson", "Pedro Nascimento", "Oscar Rieken"]
   s.email                 = ["watir-general@googlegroups.com"]
   s.homepage              = "http://github.com/hammernight/taza"
-  s.summary               = "Taza is a page object framework."
-  s.description           = "Taza is a page object framework."
-  s.required_ruby_version = '>= 1.8.7'
+  s.summary               = "Taza is an opinionated page object framework."
+  s.description           = "Taza is an opinionated page object framework."
+  s.required_ruby_version = '>= 1.9.3'
   s.rubyforge_project     = "taza"
   s.files                 = `git ls-files`.split("\n")
   s.test_files            = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -21,12 +21,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<rake>, ["~> 0.9.2"])
   s.add_runtime_dependency(%q<mocha>, ["~> 0.9.3"])
   s.add_runtime_dependency(%q<rspec>, ["~> 2.6"])
-  s.add_runtime_dependency(%q<rubigen>, ["~> 1.5.6"])
   s.add_runtime_dependency(%q<user-choices>, ["~> 1.1.6.1"])
   s.add_runtime_dependency(%q<Selenium>, ["~> 1.1.14"])
   s.add_runtime_dependency(%q<firewatir>, ["~> 1.9.4"])
   s.add_runtime_dependency(%q<watir-webdriver>, ["~> 0.4"])
   s.add_runtime_dependency(%q<activesupport>, [">= 3.1.0"])
-
-
+  s.add_runtime_dependency(%q<thor>, [">= 0.18.1"])
 end
