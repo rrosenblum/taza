@@ -3,5 +3,4 @@
 Gemfile.lock
 pkg/*
 .rspec
-.ruby-version
 vendor/
