@@ -74,7 +74,7 @@ describe Taza::Site do
     browser = stub_browser
     browser.expects(:close)
     Taza::Browser.stubs(:create).returns(browser)
-    expect(lambda { Foo.new { |site| raise StandardError}}).to raise_error
+    expect(lambda { Foo.new { |site| raise StandardError}}).to raise_error(StandardError)
   end
 
   it "should not close browser if block not given" do
@@ -256,6 +256,6 @@ describe Taza::Site do
     browser.expects(:close).never
     Taza::Browser.stubs(:create).returns(browser)
     Taza::Site.donot_close_browser
-    expect(lambda { Foo.new { |site| raise StandardError}}).to raise_error
+    expect(lambda { Foo.new { |site| raise StandardError}}).to raise_error(StandardError)
   end
 end
