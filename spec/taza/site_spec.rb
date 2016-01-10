@@ -8,12 +8,14 @@ require 'taza/page'
 require 'taza/flow'
 
 describe Taza::Site do
+  before(:all) do
+    Foo = Class.new(Taza::Site)
+  end
   #TODO: we need to clean up these tests and remove the warning below
   #/Users/bisbot/Projects/Taza/taza/spec/taza/site_spec.rb:15: warning: already initialized constant Foo
   before :each do
     @pages_path = File.join(@original_directory, "spec","sandbox","pages","foo","**","*.rb")
     @flows_path = File.join(@original_directory, "spec","sandbox","flows","*.rb")
-    Foo = Class.new(Taza::Site)
     Foo.any_instance.stubs(:pages_path).returns(@pages_path)
     ENV['BROWSER'] = nil
     ENV['DRIVER'] = nil
