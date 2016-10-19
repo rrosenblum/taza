@@ -1,10 +1,9 @@
-require 'rubygems'
-require 'bundler/setup'
-require 'mocha'
+#require 'rubygems'
+#require 'bundler/setup'
+#require 'mocha'
 require 'taza'
 require 'thor'
-require 'watir-webdriver'
-require 'selenium-webdriver'
+require 'watir'
 
 RSpec.configure do |config|
   config.mock_with :mocha

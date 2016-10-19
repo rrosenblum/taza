@@ -1,4 +1,3 @@
-require 'active_support'
 require 'taza/options'
 
 module Taza
