@@ -1,5 +1,6 @@
 language: ruby
 before_install:
+  - rvm get head
   - sudo apt-get -qq update
   - sudo apt-get install -y ruby-dev libgmp3-dev
   - gem install bundler -v 1.13.5
