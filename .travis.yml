@@ -1,8 +1,8 @@
 language: ruby
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y libgmp3-dev
-  - gem install bundler -v 1.11.2
+  - sudo apt-get install -y ruby-dev libgmp3-dev
+  - gem install bundler -v 1.13.5
 script: "bundle exec rspec spec"
 rvm:
   - 2.0.0
