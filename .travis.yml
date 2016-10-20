@@ -5,8 +5,11 @@ script: "bundle exec rspec spec"
 rvm:
   - 2.2.5
   - ruby-head
-  - rbx-2
-  - jruby-head
+  - jruby-9.1.2.0
+matrix:
+  allow_failures:
+    - rvm: rbx-2
+
 notifications:
   email:
     - pnascimento@gmail.com
