@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Taza
   # An abstraction of a web page, place the elements you care about accessing in here as well as specify the filters that apply when trying to access the element.
   #
@@ -19,6 +21,7 @@ module Taza
       def elements # :nodoc:
         @elements ||= {}
       end
+
       def filters # :nodoc:
         @filters ||= Hash.new { [] }
       end
@@ -31,18 +34,16 @@ module Taza
     #     element(:foo) {browser.element_by_xpath('some xpath')}
     #   end
     # homepage.foo.click
-    def self.element(name,&block)
-      if name.nil?
-        raise ElementError, "Element name can not be nil"
-      end
+    def self.element(name, &block)
+      raise ElementError, 'Element name can not be nil' if name.nil?
 
       if !@module.nil?
-        self.elements[@module] = Hash.new if self.elements[@module].nil?
-        self.elements[@module] = self.elements[@module].merge({ name => block })
-      elsif !self.elements[name].nil?
-        raise ElementError,"Duplicate definations for Element - #{name} on Page - #{self.to_s}"
+        elements[@module] = {} if elements[@module].nil?
+        elements[@module] = elements[@module].merge(name => block)
+      elsif !elements[name].nil?
+        raise ElementError, "Duplicate definations for Element - #{name} on Page - #{self}"
       else
-        self.elements[name] = block
+        elements[name] = block
       end
     end
 
@@ -71,21 +72,21 @@ module Taza
     def self.filter(method_name, *elements)
       elements = [:all] if elements.empty?
       elements.each do |element|
-        self.filters[element] = self.filters[element] << method_name
+        filters[element] = filters[element] << method_name
       end
     end
 
-    def self.page_module(name,&block)
-      puts "Warning: page_module is deprecated; use a partial instead."
+    def self.page_module(name, &block)
+      puts 'Warning: page_module is deprecated; use a partial instead.'
       @module = name
       yield(block)
       @module = nil
     end
-    
+
     def self.page_module_filter(method_name, page_module_name, *elements)
       elements = [page_module_name] if elements.empty?
       elements.each do |element|
-        self.filters[element] = self.filters[element] << method_name
+        filters[element] = filters[element] << method_name
       end
     end
 
@@ -95,15 +96,15 @@ module Taza
     end
 
     def add_element_methods(page_module = nil) # :nodoc:
-      self.class.elements.each do |element_name,element_block|
+      self.class.elements.each do |element_name, element_block|
         if page_module == element_name
-          element_block.each do |key,value|
+          element_block.each do |key, value|
             filters = self.class.filters[element_name] + self.class.filters[:all] + self.class.filters[key]
-            add_element_method(:filters => filters, :element_name => key, :element_block => value)
+            add_element_method(filters: filters, element_name: key, element_block: value)
           end
         else
           filters = self.class.filters[element_name] + self.class.filters[:all]
-          add_element_method(:filters => filters, :element_name => element_name, :element_block => element_block)
+          add_element_method(filters: filters, element_name: element_name, element_block: element_block)
         end
       end
     end
@@ -112,18 +113,17 @@ module Taza
       metaclass.class_eval do
         define_method(params[:element_name]) do |*args|
           check_filters(params)
-          self.instance_exec(*args,&params[:element_block])
+          instance_exec(*args, &params[:element_block])
         end
       end
     end
 
     def check_filters(params) # :nodoc:
       params[:filters].each do |filter_method|
-        unless @active_filters.include?(filter_method)
-          @active_filters << filter_method
-          raise FilterError, "#{filter_method} returned false for #{params[:element_name]}" unless send(filter_method)
-          @active_filters.delete(filter_method)
-        end
+        next if @active_filters.include?(filter_method)
+        @active_filters << filter_method
+        raise FilterError, "#{filter_method} returned false for #{params[:element_name]}" unless send(filter_method)
+        @active_filters.delete(filter_method)
       end
     end
   end

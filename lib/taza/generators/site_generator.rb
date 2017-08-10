@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'thor'
 require 'active_support/all'
 
@@ -11,7 +13,7 @@ module Taza
       File.dirname(__FILE__)
     end
 
-    desc "This will generate your Taza site. Example: taza site foo"
+    desc 'This will generate your Taza site. Example: taza site foo'
     def site
       name = site_name.underscore
 

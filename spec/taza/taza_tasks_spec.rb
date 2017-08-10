@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rubygems'
 require 'rake'
 
-describe "Taza Tasks" do
-
-
-
+describe 'Taza Tasks' do
   before :each do
-    @file_name ="#{@original_directory}/lib/taza/tasks.rb"
+    @file_name = "#{@original_directory}/lib/taza/tasks.rb"
     @rake = Rake::Application.new
     Rake.application = @rake
-    Dir.expects(:glob).with('./spec/*/').returns(['./spec/functional/','./spec/mocks/'])
+    Dir.expects(:glob).with('./spec/*/').returns(['./spec/functional/', './spec/mocks/'])
     Dir.expects(:glob).with('./spec/functional/*/').returns(['./spec/functional/foo/'])
     Dir.expects(:glob).with('./spec/functional/*_spec.rb').returns([])
     Dir.expects(:glob).with('./spec/functional/foo/*/').returns(['./spec/functional/foo/page/'])
@@ -32,24 +31,23 @@ describe "Taza Tasks" do
     Rake.application = nil
   end
 
-  xit "should create rake spec tasks for all sites" do
-    tasks.include?("spec:functional:foo").should be_true
+  xit 'should create rake spec tasks for all sites' do
+    tasks.include?('spec:functional:foo').should be_true
   end
 
-  xit "should create rake spec tasks for all sites page specs" do
-    tasks.include?("spec:functional:foo:page").should be_true
+  xit 'should create rake spec tasks for all sites page specs' do
+    tasks.include?('spec:functional:foo:page').should be_true
   end
 
-  xit "should create rake spec tasks for all sites page specs in sub-folders" do
-    tasks.include?("spec:functional:foo:page:bar").should be_true
+  xit 'should create rake spec tasks for all sites page specs in sub-folders' do
+    tasks.include?('spec:functional:foo:page:bar').should be_true
   end
 
-  xit "should not create rake spec tasks for folders that donot contain specs in their sub-tree" do
-    tasks.include?("spec:mocks").should be_false
+  xit 'should not create rake spec tasks for folders that donot contain specs in their sub-tree' do
+    tasks.include?('spec:mocks').should be_false
   end
 
   def tasks
-    @rake.tasks.collect{|task| task.name }
+    @rake.tasks.collect(&:name)
   end
-
 end

@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'taza/fixture'
 
 module Taza
   def self.load_fixtures
-    dirs = Dir.glob(File.join(Fixture.base_path,'*/'))
+    dirs = Dir.glob(File.join(Fixture.base_path, '*/'))
     dirs.unshift Fixture.base_path
     dirs.each do |dir|
-      mod = dir.sub(Fixture.base_path,File.join(File.basename(Fixture.base_path),'')).camelize.sub(/::$/,'')
-      self.class_eval <<-EOS
+      mod = dir.sub(Fixture.base_path, File.join(File.basename(Fixture.base_path), '')).camelize.sub(/::$/, '')
+      class_eval <<-EOS
       module #{mod}
-        def self.included(other_module) 
+        def self.included(other_module)
           fixture = Fixture.new
           fixture.load_fixtures_from('#{dir}')
           fixture.fixture_names.each do |fixture_name|
@@ -24,5 +26,5 @@ module Taza
     end
   end
 
-  self.load_fixtures
+  load_fixtures
 end

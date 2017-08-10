@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Baz < Taza::Page
   page_module :another_module do
     element(:some_element) { :another_some_element_value }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'thor'
 require 'active_support/all'
 
@@ -13,7 +15,7 @@ module Taza
       File.dirname(__FILE__)
     end
 
-    desc "This will generate your Taza partial. Example: taza partial navigation foo"
+    desc 'This will generate your Taza partial. Example: taza partial navigation foo'
     def partial
       @name = site_name.underscore
 
@@ -26,6 +28,7 @@ module Taza
     end
 
     private
+
     def create_partial
       template('templates/partial/partial.rb.tt', "lib/sites/#{name}/pages/partials/#{partial_name}.rb")
     end

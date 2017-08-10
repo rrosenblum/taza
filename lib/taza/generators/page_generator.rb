@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'thor'
 require 'active_support/all'
 
@@ -12,7 +14,7 @@ module Taza
       File.dirname(__FILE__)
     end
 
-    desc "This will generate a Taza page for your site. Example: taza page home foo"
+    desc 'This will generate a Taza page for your site. Example: taza page home foo'
     def page
       name = site_name.underscore
 
@@ -23,7 +25,6 @@ module Taza
         say "No such site #{name} exists! ", :red
         say "Please run 'taza create #{name}'", :green
       end
-
     end
   end
 end

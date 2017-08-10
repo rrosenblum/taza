@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'bundler/setup'
 require 'mocha'
@@ -36,18 +38,18 @@ RSpec.configure do |config|
 end
 
 def null_device
-  File.exists?('/dev/null') ? '/dev/null' : 'NUL'
+  File.exist?('/dev/null') ? '/dev/null' : 'NUL'
 end
 
 # Must set before requiring generator libs.
-TMP_ROOT = File.join(File.dirname(__FILE__),"sandbox","generated")
-PROJECT_NAME = 'example'
-PROJECT_FOLDER = File.join(TMP_ROOT,PROJECT_NAME)
+TMP_ROOT = File.join(File.dirname(__FILE__), 'sandbox', 'generated')
+PROJECT_NAME = 'example'.freeze
+PROJECT_FOLDER = File.join(TMP_ROOT, PROJECT_NAME)
 APP_ROOT = File.join(TMP_ROOT, PROJECT_NAME)
 
 def generator_sources
-  [RubiGen::PathSource.new(:test, File.join(File.dirname(__FILE__),"..","lib", "app_generators")),
-  RubiGen::PathSource.new(:test, File.join(File.dirname(__FILE__),"..", "generators"))]
+  [RubiGen::PathSource.new(:test, File.join(File.dirname(__FILE__), '..', 'lib', 'app_generators')),
+   RubiGen::PathSource.new(:test, File.join(File.dirname(__FILE__), '..', 'generators'))]
 end
 
 module Helpers
@@ -55,7 +57,7 @@ module Helpers
     def generate_site(site_name)
       site_name = "#{site_name}#{Time.now.to_i}"
       run_generator('site', [site_name], generator_sources)
-      site_file_path = File.join(PROJECT_FOLDER,'lib','sites',"#{site_name.underscore}.rb")
+      site_file_path = File.join(PROJECT_FOLDER, 'lib', 'sites', "#{site_name.underscore}.rb")
       require site_file_path
       "::#{site_name.camelize}::#{site_name.camelize}".constantize.any_instance.stubs(:base_path).returns(PROJECT_FOLDER)
       site_name.camelize.constantize

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support'
 require 'taza/options'
 
@@ -15,15 +17,15 @@ module Taza
     end
 
     def self.config_file_path # :nodoc:
-      File.join(config_folder,'config.yml')
+      File.join(config_folder, 'config.yml')
     end
-    
+
     def self.config_folder # :nodoc:
-      File.join(path,'config')
+      File.join(path, 'config')
     end
-    
+
     def self.site_file(site_name) # :nodoc:
-      YAML.load(ERB.new(File.read(File.join(config_folder,"#{site_name.underscore}.yml"))).result)[ENV['TAZA_ENV']]
+      YAML.load(ERB.new(File.read(File.join(config_folder, "#{site_name.underscore}.yml"))).result)[ENV['TAZA_ENV']]
     end
 
     def self.path # :nodoc:

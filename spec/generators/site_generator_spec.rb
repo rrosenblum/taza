@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Taza::SiteGenerator do
-  context "taza site foo_site" do
-    context "creates" do
-
+  context 'taza site foo_site' do
+    context 'creates' do
       let(:subject) { Taza::SiteGenerator.new(['foo_site']) }
       let(:output) { capture(:stdout) { subject.site } }
 
       it 'foo_site.rb' do
         expect(output).to include('lib/sites/foo_site.rb')
-        expect(File.exists?('lib/sites/foo_site.rb')).to be true
+        expect(File.exist?('lib/sites/foo_site.rb')).to be true
       end
 
       it 'lib/sites/foo_site' do
@@ -18,31 +19,31 @@ describe Taza::SiteGenerator do
       end
 
       it 'lib/sites/foo_site/flows' do
-        expect(output).to include("lib/sites/foo_site/flows")
+        expect(output).to include('lib/sites/foo_site/flows')
         expect(File.directory?('lib/sites/foo_site/flows')).to be true
       end
 
       it 'lib/sites/foo_site/pages' do
-        expect(output).to include("lib/sites/foo_site/pages")
+        expect(output).to include('lib/sites/foo_site/pages')
         expect(File.directory?('lib/sites/foo_site/pages')).to be true
       end
 
       it 'lib/sites/foo_site/pages/partials' do
-        expect(output).to include("lib/sites/foo_site/pages/partials")
+        expect(output).to include('lib/sites/foo_site/pages/partials')
         expect(File.directory?('lib/sites/foo_site/pages/partials')).to be true
       end
 
       it 'config/foo_site.yml' do
-        expect(output).to include("config/foo_site.yml")
-        expect(File.exists?('config/foo_site.yml')).to be true
+        expect(output).to include('config/foo_site.yml')
+        expect(File.exist?('config/foo_site.yml')).to be true
       end
 
       it 'does not overwrite existing site' do
         capture(:stdout) { Taza::SiteGenerator.new(['foo_site']).site }
-        expect(output).to include(*["identical", "exist"])
+        expect(output).to include('identical', 'exist')
       end
 
-      it "generates a site that can uses the block given in new" do
+      it 'generates a site that can uses the block given in new' do
         skip 'will have to fix this later'
         @site_class = generate_site(@site_name)
         stub_settings

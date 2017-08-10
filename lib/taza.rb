@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/all'
 require 'taza/version'
 require 'taza/page'
@@ -13,7 +15,7 @@ require 'extensions/hash'
 require 'extensions/array'
 require 'formatters/failing_examples_formatter'
 
-#generators
+# generators
 require_relative 'taza/generators/project_generator'
 require_relative 'taza/generators/site_generator'
 require_relative 'taza/generators/page_generator'
@@ -22,8 +24,8 @@ require_relative 'taza/generators/flow_generator'
 
 module ForwardInitialization
   module ClassMethods
-    def new(*args,&block)
-      const_get("#{name.split("::").last}").new(*args,&block)
+    def new(*args, &block)
+      const_get(name.split('::').last.to_s).new(*args, &block)
     end
   end
 

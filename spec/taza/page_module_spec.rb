@@ -1,44 +1,38 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'taza/page'
 
-describe "Taza Page Module" do
-
+describe 'Taza Page Module' do
   class PageWithModule < ::Taza::Page
-
     page_module :module do
       element(:module_element) { browser }
     end
-
   end
 
-  it "should execute elements in the context of their page module" do
+  it 'should execute elements in the context of their page module' do
     page = PageWithModule.new(:module)
     page.browser = :something
     expect(page.module_element).to eql :something
   end
 
   class AnotherPageWithModule < ::Taza::Page
-
     page_module :other_module do
       element(:another_module_element) { browser }
     end
-
   end
 
-
-  it "should not execute elements that belong to a page module but accessed without it" do
-    expect(lambda { AnotherPageWithModule.new.another_module_element }).to raise_error(NoMethodError)
+  it 'should not execute elements that belong to a page module but accessed without it' do
+    expect(-> { AnotherPageWithModule.new.another_module_element }).to raise_error(NoMethodError)
   end
 
-  it "should execute elements in the context of their page module when accessed with it" do
+  it 'should execute elements in the context of their page module when accessed with it' do
     page = AnotherPageWithModule.new(:other_module)
     page.browser = :another_thing
     expect(page.another_module_element).to eql :another_thing
   end
 
-
   class TestPageWithModules < ::Taza::Page
-
     page_module :module_one do
       element(:some_module_element) { :something }
     end
@@ -46,10 +40,9 @@ describe "Taza Page Module" do
     page_module :module_two do
       element(:some_module_element) { :nothing }
     end
-
   end
 
-  it "should execute elements with the same name but different page modules" do
+  it 'should execute elements with the same name but different page modules' do
     module_one = TestPageWithModules.new(:module_one)
     module_two = TestPageWithModules.new(:module_two)
     expect(module_one.some_module_element).to eql :something
@@ -57,15 +50,13 @@ describe "Taza Page Module" do
   end
 
   class PageWithMultipleModuleElements < ::Taza::Page
-
     page_module :module do
       element(:module_element) { :something }
       element(:another_module_element) { :nothing }
     end
-
   end
 
-  it "should execute elements with the same name but different page modules" do
+  it 'should execute elements with the same name but different page modules' do
     page_module = PageWithMultipleModuleElements.new(:module)
     expect(page_module.module_element).to eql :something
     expect(page_module.another_module_element).to eql :nothing
@@ -82,7 +73,7 @@ describe "Taza Page Module" do
     end
   end
 
-  it "should execute filters for page modules" do
+  it 'should execute filters for page modules' do
     page = PageWithFilterAndModule.new(:module)
     expect(page.sample_element).to eql :something
   end
@@ -98,9 +89,9 @@ describe "Taza Page Module" do
     end
   end
 
-  it "should raise an error for page-module filters that return false" do
+  it 'should raise an error for page-module filters that return false' do
     page = PageWithFalseFilterAndModule.new(:module)
-    expect(lambda { page.sample_element }).to raise_error(Taza::FilterError)
+    expect(-> { page.sample_element }).to raise_error(Taza::FilterError)
   end
 
   class PageWithFilterAndModuleElements < ::Taza::Page
@@ -114,9 +105,9 @@ describe "Taza Page Module" do
     end
   end
 
-  it "should execute filters for elements inside page modules" do
+  it 'should execute filters for elements inside page modules' do
     page = PageWithFilterAndModuleElements.new(:module)
-    expect(lambda { page.sample_element }).to raise_error(Taza::FilterError)
+    expect(-> { page.sample_element }).to raise_error(Taza::FilterError)
   end
 
   class PageWithFiltersAndModuleElements < ::Taza::Page
@@ -137,9 +128,9 @@ describe "Taza Page Module" do
     end
   end
 
-  it "should execute filters for specific and all elements inside page modules" do
+  it 'should execute filters for specific and all elements inside page modules' do
     page = PageWithFiltersAndModuleElements.new(:module)
-    expect(lambda { page.sample_element }).to raise_error(Taza::FilterError)
+    expect(-> { page.sample_element }).to raise_error(Taza::FilterError)
     expect(page.another_sample_element).to eql :something
   end
 
@@ -163,11 +154,10 @@ describe "Taza Page Module" do
     end
   end
 
-  it "should execute page module filters for identical element names appropriately" do
+  it 'should execute page module filters for identical element names appropriately' do
     foo = PageWithFiltersAndModulesAndElements.new(:foo_module)
     expect(foo.sample_element).to eql :something
     bar = PageWithFiltersAndModulesAndElements.new(:bar_module)
-    expect(lambda { bar.sample_element }).to raise_error(Taza::FilterError)
+    expect(-> { bar.sample_element }).to raise_error(Taza::FilterError)
   end
-
 end
